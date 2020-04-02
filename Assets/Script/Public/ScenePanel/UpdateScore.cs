@@ -16,6 +16,5 @@ public class UpdateScore : MonoBehaviour
     {
         TxtScore.GetComponent<Text>().text = GameBaseSetting.Score.ToString();
         TxtLife.GetComponent<Text>().text = GameBaseSetting.Life.ToString();
-
     }
 }
