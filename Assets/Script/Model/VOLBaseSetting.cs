@@ -7,9 +7,9 @@ using UnityEngine;
 /// </summary>
 public class VOLBaseSetting 
 {
-    public static float BgmVOL;
-    public static float PropVOL;
-    public static float ActionVOL;
+    public static float BgmVOL=1;
+    public static float PropVOL=1;
+    public static float ActionVOL=1;
 }
 
 /// <summary>

@@ -37,7 +37,8 @@ public class GameBaseSetting
     public static string JsonPath = Application.persistentDataPath + "/U.json";
     public static string ScoreJsonPath = Application.persistentDataPath + "/S.json";
     public static string VolJsonPath = Application.persistentDataPath + "/V.json";
-    public static string URL = "http://192.168.2.242:8088";
+    //public const string URL = "http://192.168.2.242:8088";
+    public const string URL = "http://localhost:4751";
     /// <summary>
     /// 用户名
     /// </summary>

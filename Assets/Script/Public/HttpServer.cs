@@ -57,7 +57,7 @@ public class HttpServer
         using (UnityWebRequest request = UnityWebRequest.Get(url))
         {
             yield return request.SendWebRequest();
-
+            result.comlpete = true;
             if (request.isHttpError || request.isNetworkError)
             {
                 result.succ = false;

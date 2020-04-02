@@ -13,7 +13,7 @@ public class Open : MonoBehaviour
     public GameObject Loginbtn;
     public GameObject Logoutbtn;
     public GameObject TT;
-    // Start is called before the first frame update
+    // 
     void Start()
     {
         Time.timeScale = 1;
@@ -27,6 +27,17 @@ public class Open : MonoBehaviour
             GameBaseSetting.Id = u.Id;
         }
         SetValue();
+        //初次打开设置音量
+        if (!File.Exists(GameBaseSetting.VolJsonPath))
+        {
+            File.Create(GameBaseSetting.VolJsonPath).Dispose();
+
+            VOLBase vOL = new VOLBase();
+            vOL.ActionVOL = 1;
+            vOL.BgmVOL = 1;
+            vOL.PropVOL = 1;
+            File.WriteAllText(GameBaseSetting.VolJsonPath, JsonUtility.ToJson(vOL));
+        }
     }
 
     // Update is called once per frame
@@ -42,7 +53,7 @@ public class Open : MonoBehaviour
             Logoutbtn.SetActive(true);
             TT.SetActive(true);
             TT.GetComponent<Text>().text = "欢迎：" + GameBaseSetting.Sname;
-            
+
         }
         else
         {

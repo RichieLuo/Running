@@ -136,7 +136,7 @@ public class ActionController : MonoBehaviour
     {
         if (!string.IsNullOrEmpty(GameBaseSetting.Id))
         {
-            string url = string.Format("{0}/api/Score/AddScore?Id={1}&Score={2}",GameBaseSetting.ScoreJsonPath, GameBaseSetting.Id, GameBaseSetting.Score.ToString());
+            string url = string.Format("{0}/api/Score/AddScore?Id={1}&Score={2}&map={3}",GameBaseSetting.URL, GameBaseSetting.Id, GameBaseSetting.Score.ToString(),GameBaseSetting.Map);
             HttpServer hs = new HttpServer();
             GameBaseSetting.SendScore = true;
             yield return hs.SendGet(url);

@@ -38,6 +38,6 @@ public class BTNClick : MonoBehaviour
         var go = GameObject.FindGameObjectWithTag("Tag_Player").GetComponent<ActionController>();
         go.isJump = true;
         //this.gameObject.SetActive(false);
-
     }
+
 }

@@ -10,6 +10,8 @@ public class Collide_Player : MonoBehaviour
 {
     private Player_Buff buff;
     public GameObject PropBgm;
+    public GameObject Warn;
+    public GameObject Warn2;
     // Start is called before the first frame update
     void Start()
     {
@@ -47,7 +49,16 @@ public class Collide_Player : MonoBehaviour
                 {
                     PlayBgm(2);
                     GameBaseSetting.Life--;
+                    Warn.SetActive(true);
+                    Invoke("ActiveFalse",0.5f);
                 }
+                break;
+            case "Tag_Life"://胶囊
+                   PlayBgm(1);
+                    GameBaseSetting.Life++;
+                    Warn2.SetActive(true);
+                    Invoke("ActiveFalse", 0.5f);
+                collision.gameObject.SetActive(false);
                 break;
             case "Tag_GameOver"://被卡住 直接结束游戏
                 GameBaseSetting.Life = 0;
@@ -62,5 +73,11 @@ public class Collide_Player : MonoBehaviour
     {
         PropBgm.GetComponent<AudioSource>().clip = PropBgm.GetComponent<BGMList>().Audio[i];
         PropBgm.GetComponent<AudioSource>().Play();
+    }
+
+    void ActiveFalse()
+    {
+        Warn.SetActive(false);
+        Warn2.SetActive(false);
     }
 }
