@@ -10,38 +10,38 @@ public class Collide_Player : MonoBehaviour
 {
     private Player_Buff buff;
     public GameObject PropBgm;
-    public GameObject Warn;
-    public GameObject Warn2;
+    public List<GameObject> WarnList;
     // Start is called before the first frame update
     void Start()
     {
         buff = GetComponent<Player_Buff>();
     }
 
-    
+
     /// <summary>
     /// 触发器
     /// </summary>
     /// <param name="collision"></param>
     void OnTriggerEnter(Collider collision)
     {
+        bool hide = false;
         switch (collision.gameObject.tag.ToString())
         {
             case "Tag_Chest"://碰到加速宝箱
                 PlayBgm(1);
                 buff.Speed_On = true;
-                collision.gameObject.SetActive(false);
+                hide = true;
                 GameBaseSetting.Score += 30;
                 break;
             case "Tag_ChestJump"://碰到跳跃宝箱
                 PlayBgm(1);
                 buff.Jump_On = true;
-                collision.gameObject.SetActive(false);
+                hide = true;
                 GameBaseSetting.Score += 30;
                 break;
             case "Tag_Icon"://碰到金币
                 PlayBgm(0);
-                collision.gameObject.SetActive(false);
+                hide = true;
                 GameBaseSetting.Score++;
                 break;
             case "Tag_Stabs"://碰到地刺
@@ -49,16 +49,16 @@ public class Collide_Player : MonoBehaviour
                 {
                     PlayBgm(2);
                     GameBaseSetting.Life--;
-                    Warn.SetActive(true);
-                    Invoke("ActiveFalse",0.5f);
+                    WarnList[0].SetActive(true);
+                    Invoke("ActiveFalse", 0.5f);
                 }
                 break;
             case "Tag_Life"://胶囊
-                   PlayBgm(1);
-                    GameBaseSetting.Life++;
-                    Warn2.SetActive(true);
-                    Invoke("ActiveFalse", 0.5f);
-                collision.gameObject.SetActive(false);
+                PlayBgm(1);
+                GameBaseSetting.Life++;
+                WarnList[1].SetActive(true);
+                Invoke("ActiveFalse", 0.5f);
+                hide = true;
                 break;
             case "Tag_GameOver"://被卡住 直接结束游戏
                 GameBaseSetting.Life = 0;
@@ -66,18 +66,31 @@ public class Collide_Player : MonoBehaviour
             default:
                 break;
         }
+        if (hide)
+        {
+            collision.gameObject.SetActive(false);
+        }
         
-    }
 
+    }
+    /// <summary>
+    /// 播放音效
+    /// </summary>
+    /// <param name="i"></param>
     void PlayBgm(int i)
     {
         PropBgm.GetComponent<AudioSource>().clip = PropBgm.GetComponent<BGMList>().Audio[i];
         PropBgm.GetComponent<AudioSource>().Play();
     }
-
+    /// <summary>
+    /// 一个定时方法，定时让生命值变化的提示消失
+    /// </summary>
     void ActiveFalse()
     {
-        Warn.SetActive(false);
-        Warn2.SetActive(false);
+        for (int i = 0;  i< WarnList.Count; i++)
+        {
+            WarnList[i].SetActive(false);
+        }
     }
+
 }

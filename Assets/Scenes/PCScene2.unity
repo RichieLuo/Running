@@ -1615,8 +1615,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PropBgm: {fileID: 2101651569}
-  Warn: {fileID: 1906334289}
-  Warn2: {fileID: 213828077}
+  WarnList:
+  - {fileID: 1906334289}
+  - {fileID: 213828077}
 --- !u!114 &393310172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3667,8 +3668,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PropBgm: {fileID: 2101651569}
-  Warn: {fileID: 1906334289}
-  Warn2: {fileID: 213828077}
+  WarnList:
+  - {fileID: 1906334289}
+  - {fileID: 213828077}
 --- !u!114 &879026233
 MonoBehaviour:
   m_ObjectHideFlags: 0
