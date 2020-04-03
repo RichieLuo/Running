@@ -24,7 +24,6 @@ public class SaveJson
     }
     public static T ReadJson<T>(string Path)
     {
-        //T t;
         if (File.Exists(Path))
         {
             string json = File.ReadAllText(Path);
