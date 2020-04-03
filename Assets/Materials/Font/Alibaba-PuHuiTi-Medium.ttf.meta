@@ -1,0 +1,25 @@
+fileFormatVersion: 2
+guid: cc176f50fda727d4d96209ec8c18038d
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Alibaba PuHuiTi
+  fontNames:
+  - Alibaba PuHuiTi
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: c1ba1d61feba8384398b502f93172e7b, type: 3}
+  - {fileID: 12800000, guid: 128e9846f0476a8429484a1e1a081217, type: 3}
+  - {fileID: 12800000, guid: cb65f649be5972f458028f41ee32af93, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
