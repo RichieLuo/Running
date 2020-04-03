@@ -25,11 +25,11 @@ public class SaveJson
     }
     public static T ReadJson<T>(string Path)
     {
-        T t;
+        //T t;
         if (File.Exists(Path))
         {
             string json = File.ReadAllText(Path);
-            t = JsonUtility.FromJson<T>(json);
+           T t = JsonUtility.FromJson<T>(json);
             return t;
         }
         else

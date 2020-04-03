@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// 计算成绩、生命值
+/// 刷新成绩、生命值
 /// </summary>
 public class UpdateScore : MonoBehaviour
 {
