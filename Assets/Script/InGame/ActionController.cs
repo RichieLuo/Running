@@ -131,7 +131,10 @@ public class ActionController : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// 发送分数
+    /// </summary>
+    /// <returns></returns>
     public IEnumerator SendScore()
     {
         if (!string.IsNullOrEmpty(GameBaseSetting.Id))
