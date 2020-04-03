@@ -7,7 +7,6 @@ public class SaveJson
 {
     public static void Save(string Path, string values)
     {
-        //Debug.Log(values);
         try
         {
             if (!File.Exists(Path))
