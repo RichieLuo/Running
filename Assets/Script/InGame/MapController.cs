@@ -49,7 +49,7 @@ public class MapController : MonoBehaviour
             create.SetActive(true);//启用
         }
         var pst = this.gameObject.transform.position;
-        this.gameObject.transform.position=new Vector3(pst.x+68f,pst.y,pst.z);//将该碰撞器转移到下一个地方
+        this.gameObject.transform.position=new Vector3(pst.x+68f,pst.y,pst.z);//将该碰撞器转移到下一个位置
 
     }
 }
