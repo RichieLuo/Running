@@ -58,7 +58,7 @@ public class AccountController : MonoBehaviour
         if (hs.value != "用户名或密码错误" && hs.value != "登录失败")
         {
             Save(hs.value);
-            //SceneManager.LoadScene("Showcase");
+            SceneManager.LoadScene("Showcase");
         }
         else
         {
