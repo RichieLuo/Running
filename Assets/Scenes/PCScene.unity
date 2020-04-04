@@ -2123,7 +2123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbf38ea6afbeb684fabdfe4501dcc850, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PropBgm: {fileID: 0}
+  PropBgm: {fileID: 517617325}
   WarnList:
   - {fileID: 1312065747}
   - {fileID: 1876116840}
