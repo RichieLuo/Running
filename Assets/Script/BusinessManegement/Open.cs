@@ -14,7 +14,7 @@ public class Open : MonoBehaviour
     public GameObject Logoutbtn;
     public GameObject TT;
     // 
-    void Start()
+    void Awake()
     {
         Time.timeScale = 1;
         GameBaseSetting.Life = 5;
@@ -33,9 +33,9 @@ public class Open : MonoBehaviour
             File.Create(GameBaseSetting.VolJsonPath).Dispose();
 
             VOLBase vOL = new VOLBase();
-            vOL.ActionVOL = 1;
-            vOL.BgmVOL = 1;
-            vOL.PropVOL = 1;
+            vOL.ActionVOL = 0.5f;
+            vOL.BgmVOL = 0.5f;
+            vOL.PropVOL = 0.5f;
             File.WriteAllText(GameBaseSetting.VolJsonPath, JsonUtility.ToJson(vOL));
         }
     }

@@ -14,6 +14,7 @@ public class StartGame : MonoBehaviour
 
     void Start()
     {
+        GameBaseSetting.DestoryBGM = true;
         //生成首个地图模块
         GameObject go = GetComponent<GoPool>().GetGo(0,false);
         go.SetActive(true);

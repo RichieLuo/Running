@@ -23,6 +23,8 @@ public class BTNClick : MonoBehaviour
     }
     public void BackIndex()
     {
+        GameBaseSetting.HasBGM = false;
+        GameBaseSetting.DestoryBGM = false;
         SceneManager.LoadScene("Showcase");
     }
     public void Play()

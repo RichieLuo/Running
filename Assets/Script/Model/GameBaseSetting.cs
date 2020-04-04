@@ -48,5 +48,8 @@ public class GameBaseSetting
     /// </summary>
     public static string Id = "";
 
+    public static bool HasBGM=false;
+    public static bool DestoryBGM = false;
+
 
 }

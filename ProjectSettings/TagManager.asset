@@ -16,6 +16,8 @@ TagManager:
   - Tag_Stabs
   - Tag_GameOver
   - Tag_ChestJump
+  - Tag_Life
+  - Tag_MenuBGM
   layers:
   - Default
   - TransparentFX
