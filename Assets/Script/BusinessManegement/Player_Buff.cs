@@ -28,28 +28,32 @@ public class Player_Buff : MonoBehaviour
         {
             Speed = Speed_Buff + Speed;
             Speed_On = false;
-            Invoke("Reset", 5);//计时
+            Invoke("ResetSpeed", 5);//计时
         }
         if (Jump_On)
         {
             Jumpheigh= Jumpheigh + 0.5f;
             Jump_On = false;
-            Invoke("Reset", 10);//计时
+            Invoke("ResetJump", 10);//计时
         }
     }
     /// <summary>
     /// 重置
     /// </summary>
-    private void Reset()
+    private void ResetSpeed()
     {
         if (!Speed_On)
         {
             Speed = 4;
         }
+       
+
+    }
+    private void ResetJump()
+    {
         if (!Jump_On)
         {
             Jumpheigh = 2;
         }
-
     }
 }

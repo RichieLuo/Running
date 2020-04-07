@@ -13,14 +13,23 @@ public class BGMController : MonoBehaviour
     GameObject CloneObj;
     void Start()
     {
-
-        if (!GameBaseSetting.HasBGM)
+        try
         {
-            CloneObj = Instantiate(BGM, BGM.transform) as GameObject;
-            GameBaseSetting.HasBGM = true;
+            if (!GameBaseSetting.HasBGM)
+            {
+                CloneObj = Instantiate(BGM, BGM.transform) as GameObject;
+                GameBaseSetting.HasBGM = true;
+                CloneObj.GetComponent<AudioSource>().volume = VOLBaseSetting.BgmVOL;
+            }
+
+            DontDestroyOnLoad(CloneObj);
         }
-        CloneObj.GetComponent<AudioSource>().volume = VOLBaseSetting.BgmVOL;
-        DontDestroyOnLoad(CloneObj);
+        catch (System.Exception)
+        {
+
+            throw;
+        }
+        
 
 
     }
