@@ -42,4 +42,6 @@ public class BTNClick : MonoBehaviour
         //this.gameObject.SetActive(false);
     }
 
+   
+
 }

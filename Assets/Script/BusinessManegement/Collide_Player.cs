@@ -31,13 +31,13 @@ public class Collide_Player : MonoBehaviour
                 PlayBgm(1);
                 buff.Speed_On = true;
                 hide = true;
-                GameBaseSetting.Score += 30;
+                GameBaseSetting.Score += 10;
                 break;
             case "Tag_ChestJump"://碰到跳跃宝箱
                 PlayBgm(1);
                 buff.Jump_On = true;
                 hide = true;
-                GameBaseSetting.Score += 30;
+                GameBaseSetting.Score += 10;
                 break;
             case "Tag_Icon"://碰到金币
                 PlayBgm(0);
@@ -55,10 +55,14 @@ public class Collide_Player : MonoBehaviour
                 break;
             case "Tag_Life"://胶囊
                 PlayBgm(1);
-                GameBaseSetting.Life++;
-                WarnList[1].SetActive(true);
-                Invoke("ActiveFalse", 0.5f);
-                hide = true;
+                if (GameBaseSetting.Life < 10)
+                {
+                    GameBaseSetting.Life++;
+                    WarnList[1].SetActive(true);
+                    GameBaseSetting.Score += 15;
+                    Invoke("ActiveFalse", 0.5f);
+                    hide = true;
+                }
                 break;
             case "Tag_GameOver"://被卡住 直接结束游戏
                 GameBaseSetting.Life = 0;
