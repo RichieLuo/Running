@@ -27,16 +27,13 @@ public class BgmVOL : MonoBehaviour
         }
 
         this.gameObject.GetComponent<Scrollbar>().value = i;
-        //BGM.GetComponent<AudioSource>().volume = i;
-
-
     }
 
     public void ChangeVOL(float i)
     {
-        if (Gaming)
+        if (Gaming)//判断该滑杆的属性
         {
-            VOLBaseSetting.BgmVOL = i;
+            VOLBaseSetting.BgmVOL = i;//给全局变量赋值，i是当前拖动滑杆的值
         }
         else if (Prop)
         {
@@ -46,13 +43,12 @@ public class BgmVOL : MonoBehaviour
         {
             VOLBaseSetting.ActionVOL = i;
         }
-
         BGM.GetComponent<AudioSource>().volume = i;
         var model = new VOLBase();
         model.ActionVOL = VOLBaseSetting.ActionVOL;
         model.PropVOL = VOLBaseSetting.PropVOL;
         model.BgmVOL = VOLBaseSetting.BgmVOL;
-        var str = JsonUtility.ToJson(model);
-        SaveJson.Save(GameBaseSetting.VolJsonPath, str);
+        var str = JsonUtility.ToJson(model);//根据最新的音量配置实例化一个新的实体，转换成Json串
+        SaveJson.Save(GameBaseSetting.VolJsonPath, str);//保存到本地
     }
 }

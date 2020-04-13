@@ -23,24 +23,7 @@ public class AccountController : MonoBehaviour
     #region 登录模块
     public void LoginClick()
     {
-        Dictionary<string, string> formFields = new Dictionary<string, string>();
-        string id = GameObject.Find("LoginId").GetComponent<InputField>().text;
-        string pwd = GameObject.Find("LoginPwd").GetComponent<InputField>().text;
-        if (string.IsNullOrEmpty(id) || string.IsNullOrEmpty(pwd))
-        {
-            Active.GetComponent<Text>().text = "请将信息填写完整";
-            msg.SetActive(true);
-        }
-        else
-        {
-
-            formFields.Add("userName", id);
-            formFields.Add("Pwd", GetMD5(pwd));
-
-            string url = string.Format("{0}/api/Account/Login?userName={1}&Pwd={2}", GameBaseSetting.URL, formFields["userName"], formFields["Pwd"]);
-            StartCoroutine(RequestAction(true, url, formFields));
-        }
-
+        LoginAndRegister(true, "Login");
     }
 
     /// <summary>
@@ -54,7 +37,6 @@ public class AccountController : MonoBehaviour
 
     public void Login(HttpServer hs)
     {
-
         if (hs.value != "用户名或密码错误" && hs.value != "登录失败")
         {
             Save(hs.value);
@@ -63,31 +45,33 @@ public class AccountController : MonoBehaviour
         else
         {
             Active.GetComponent<Text>().text = hs.value;
-            //GameObject.FindGameObjectWithTag("Tag_MsgTXT").SetActive(true);
             msg.SetActive(true);
         }
-
     }
     #endregion
 
     #region 注册模块
     public void RegisterClick()
     {
-        Dictionary<string, string> formFields = new Dictionary<string, string>();
+        LoginAndRegister(false, "Register");
+    }
 
+    void LoginAndRegister(bool login,string Action)
+    {
+        Dictionary<string, string> formFields = new Dictionary<string, string>();
         string id = GameObject.Find("LoginId").GetComponent<InputField>().text;
         string pwd = GameObject.Find("LoginPwd").GetComponent<InputField>().text;
         if (string.IsNullOrEmpty(id) || string.IsNullOrEmpty(pwd))
         {
             Active.GetComponent<Text>().text = "请将信息填写完整";
-            msg.SetActive(true);
+            msg.SetActive(true);//弹出提示框
         }
-
         formFields.Add("userName", id);
         formFields.Add("Pwd", GetMD5(pwd));
-        string url = string.Format("{0}/api/Account/Register?userName={1}&Pwd={2}", GameBaseSetting.URL, formFields["userName"], formFields["Pwd"]);
-        StartCoroutine(RequestAction(false, url, formFields));
+        string url = string.Format("{0}/api/Account/{1}?userName={2}&Pwd={3}", GameBaseSetting.URL,Action, formFields["userName"], formFields["Pwd"]);
+        StartCoroutine(RequestAction(login, url, formFields));
     }
+
 
     /// <summary>
     /// 前往注册
@@ -100,7 +84,6 @@ public class AccountController : MonoBehaviour
     public void Register(HttpServer hs)
     {
         Active.GetComponent<Text>().text = hs.value;
-        //GameObject.FindGameObjectWithTag("Tag_MsgTXT").SetActive(true);
         msg.SetActive(true);
     }
 
@@ -116,8 +99,6 @@ public class AccountController : MonoBehaviour
     public IEnumerator RequestAction(bool login, string url, Dictionary<string, string> formFields)
     {
         HttpServer hs = new HttpServer();
-
-
         yield return hs.SendPost(url, formFields);
         if (!hs.isComplete)
         {

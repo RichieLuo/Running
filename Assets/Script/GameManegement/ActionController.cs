@@ -29,7 +29,7 @@ public class ActionController : MonoBehaviour
     /// <summary>
     /// 游戏结束
     /// </summary>
-    public bool GameOver;
+    public bool gameOver;
 
     /// <summary>
     /// 游戏结束时的提示信息
@@ -53,7 +53,7 @@ public class ActionController : MonoBehaviour
     void Start()
     {
         played = false;
-        GameOver = false;
+        gameOver = false;
         GameBaseSetting.SendScore = false;
         buff = GetComponent<Player_Buff>();
         Rig = GetComponent<Rigidbody>();
@@ -65,9 +65,9 @@ public class ActionController : MonoBehaviour
     {
         if (GameBaseSetting.Life == 0)
         {
-            GameOver = true;
+            gameOver = true;
         }
-        if (!GameOver)
+        if (!gameOver)
         {
             if (Input.GetKey(KeyCode.D))//按下D开始奔跑
             {
@@ -96,7 +96,6 @@ public class ActionController : MonoBehaviour
                     animation.Play(string.Format("Idle {0}", this.gameObject.name));
                 }
             }
-
             if (Input.GetKeyDown(KeyCode.Space))//按下空格跳跃
             {
                 isJump = true;
@@ -111,23 +110,7 @@ public class ActionController : MonoBehaviour
         }
         else
         {
-            if (!played)
-            {
-                PlayBGM(2);
-                played = true;
-                GameObject.Find("Setting").SetActive(false);
-            }
-
-            GameOverMsg.SetActive(true);
-            
-            GameObject.Find("ScoreTxt").GetComponent<Text>().text = GameBaseSetting.Score.ToString();
-            animation.Play(string.Format("Failure {0}", this.gameObject.name));
-            GameObject.Find("BGM").GetComponent<AudioSource>().Stop();
-            if (!GameBaseSetting.SendScore)
-            {
-                StartCoroutine(SendScore());
-            }
-
+            GameOver();
         }
     }
 
@@ -147,6 +130,24 @@ public class ActionController : MonoBehaviour
 
     }
 
+    void GameOver()
+    {
+        if (!played)
+        {
+            PlayBGM(2);
+            played = true;
+            GameObject.Find("Setting").SetActive(false);
+        }
+        GameOverMsg.SetActive(true);
+        GameObject.Find("ScoreTxt").GetComponent<Text>().text = GameBaseSetting.Score.ToString();
+        animation.Play(string.Format("Failure {0}", this.gameObject.name));
+        GameObject.Find("BGM").GetComponent<AudioSource>().Stop();
+        if (!GameBaseSetting.SendScore)
+        {
+            StartCoroutine(SendScore());
+        }
+    }
+
     /// <summary>
     /// 接触到地面时
     /// </summary>
@@ -159,7 +160,6 @@ public class ActionController : MonoBehaviour
             PlayBGM(1);
             isJump = false;
             JumpCount = 0;
-
         }
     }
 

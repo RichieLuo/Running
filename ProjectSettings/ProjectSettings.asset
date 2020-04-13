@@ -854,7 +854,7 @@ PlayerSettings:
       daydreamIconForeground: {fileID: 0}
       daydreamIconBackground: {fileID: 0}
   cloudServicesEnabled:
-    Collab: 1
+    Collab: 0
     UNet: 1
   luminIcon:
     m_Name: 
@@ -868,9 +868,9 @@ PlayerSettings:
     m_VersionCode: 1
     m_VersionName: 
   apiCompatibilityLevel: 6
-  cloudProjectId: af68021a-5d2c-4198-936e-f8f1ba4da20b
+  cloudProjectId: 68b23660-d2b3-4909-84d7-3dcdcb37dd7a
   framebufferDepthMemorylessMode: 0
-  projectName: CatAndMouse
+  projectName: "\u732B\u548C\u8001\u9F20"
   organizationId: richierow
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0

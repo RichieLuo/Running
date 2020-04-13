@@ -16,11 +16,11 @@ public class Open : MonoBehaviour
     // 
     void Awake()
     {
-        Time.timeScale = 1;
-        GameBaseSetting.Life = 5;
-        GameBaseSetting.PartPosition = new int[] { -68, 0, 20, 36 };
-        GameBaseSetting.Score = 0;
-        User u= SaveJson.ReadJson<User>(GameBaseSetting.JsonPath);
+        Time.timeScale = 1;//
+        GameBaseSetting.Life = 5;//初始化生命值
+        GameBaseSetting.PartPosition = new int[] { -68, 0, 20, 36 };//初始化地图位置
+        GameBaseSetting.Score = 0;//分数
+        User u= SaveJson.ReadJson<User>(GameBaseSetting.JsonPath);//用户文件
         if (u != null)
         {
             GameBaseSetting.Sname = u.SName;
@@ -31,11 +31,12 @@ public class Open : MonoBehaviour
         if (!File.Exists(GameBaseSetting.VolJsonPath))
         {
             File.Create(GameBaseSetting.VolJsonPath).Dispose();
-
-            VOLBase vOL = new VOLBase();
-            vOL.ActionVOL = 0.5f;
-            vOL.BgmVOL = 0.5f;
-            vOL.PropVOL = 0.5f;
+            VOLBase vOL = new VOLBase()
+            {
+                ActionVOL = 0.5f,
+                BgmVOL = 0.5f,
+                PropVOL = 0.5f
+            };
             File.WriteAllText(GameBaseSetting.VolJsonPath, JsonUtility.ToJson(vOL));
         }
     }

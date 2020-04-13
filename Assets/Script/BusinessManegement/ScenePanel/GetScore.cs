@@ -43,26 +43,21 @@ public class GetScore : MonoBehaviour
         {
             yield return null;
         }
-        if (hs.isSucc)
+        if (hs.isSucc && hs.value != "查询失败")
         {
-            if (hs.value != "查询失败")
+            var list = new List<Score>();
+            var str = hs.value;
+            str = "{ \"list\": " + str + "}";
+            Response<Score> List = JsonUtility.FromJson<Response<Score>>(str);
+            foreach (Score item in List.list)//遍历列表
             {
-                var list = new List<Score>();
-                var str = hs.value;
-                str = "{ \"list\": " + str + "}";
-                Response<Score> List = JsonUtility.FromJson<Response<Score>>(str);
-                foreach (Score item in List.list)
-                {
-                    GameObject _Instance = Instantiate(TXT);
-                    _Instance.GetComponent<Text>().text = item.UserName;
-                    _Instance.transform.parent = Content.transform;
-                    GameObject _Instance2 = Instantiate(TXT);
-                    _Instance2.GetComponent<Text>().text = item.Credits.ToString();
-                    _Instance2.transform.parent = Content.transform;
-                }
+                GameObject _Instance = Instantiate(TXT);//实例化该预制件
+                _Instance.GetComponent<Text>().text = item.UserName;//赋值并显示
+                _Instance.transform.parent = Content.transform;
+                GameObject _Instance2 = Instantiate(TXT);
+                _Instance2.GetComponent<Text>().text = item.Credits.ToString();
+                _Instance2.transform.parent = Content.transform;
             }
-
-
         }
     }
     // Json解析为该对象

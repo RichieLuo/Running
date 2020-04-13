@@ -5,10 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class CaseMap : MonoBehaviour
 {
-    public void Map1Click()
+    public void Map1Click()//关卡1点击事件
     {
-        GameBaseSetting.Map = 1;
-        SceneManager.LoadScene("PCScene");
+        GameBaseSetting.Map = 1;//设置地图编号参数
+        SceneManager.LoadScene("PCScene");//跳转
     }
     public void Map2Click()
     {

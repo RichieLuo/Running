@@ -32,15 +32,12 @@ public class MapController : MonoBehaviour
      {
         if (HideObject != -1)
         {
-           //var del= GameObject.FindGameObjectWithTag("Tag_GoPool").GetComponent<GoPool>().GetGo(HideObject, false);
             var result = GameObject.Find("Part"+HideObject+"(Clone)");
-            
             if (result != null)
             {
-                PartPosition[HideObject] = PartPosition[HideObject] + 68;
+                PartPosition[HideObject] = PartPosition[HideObject] + 68;//计算下一次的位置
                 Destroy(result);//销毁
             }
-            
         }
         if (ShowObject != -1)
         {
