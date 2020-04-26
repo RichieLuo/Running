@@ -16,26 +16,17 @@ public class Open : MonoBehaviour
     // 
     void Awake()
     {
-        Time.timeScale = 1;//
-        GameBaseSetting.Life = 5;//初始化生命值
+        Time.timeScale = 1; GameBaseSetting.Life = 5;//初始化生命值
         GameBaseSetting.PartPosition = new int[] { -68, 0, 20, 36 };//初始化地图位置
         GameBaseSetting.Score = 0;//分数
-        User u= SaveJson.ReadJson<User>(GameBaseSetting.JsonPath);//用户文件
-        if (u != null)
-        {
-            GameBaseSetting.Sname = u.SName;
-            GameBaseSetting.Id = u.Id;
-        }
+        GetValue();
         SetValue();
-        //初次打开设置音量
-        if (!File.Exists(GameBaseSetting.VolJsonPath))
+        if (!File.Exists(GameBaseSetting.VolJsonPath))//初次打开设置音量
         {
             File.Create(GameBaseSetting.VolJsonPath).Dispose();
             VOLBase vOL = new VOLBase()
             {
-                ActionVOL = 0.5f,
-                BgmVOL = 0.5f,
-                PropVOL = 0.5f
+                ActionVOL = 0.5f, BgmVOL = 0.5f, PropVOL = 0.5f
             };
             File.WriteAllText(GameBaseSetting.VolJsonPath, JsonUtility.ToJson(vOL));
         }
@@ -61,6 +52,16 @@ public class Open : MonoBehaviour
             Loginbtn.SetActive(true);
             Logoutbtn.SetActive(false);
             TT.SetActive(false);
+        }
+    }
+
+    void GetValue()
+    {
+        User u = SaveJson.ReadJson<User>(GameBaseSetting.JsonPath);//用户文件
+        if (u != null)
+        {
+            GameBaseSetting.Sname = u.SName;
+            GameBaseSetting.Id = u.Id;
         }
     }
     

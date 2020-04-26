@@ -59,8 +59,10 @@ public class AccountController : MonoBehaviour
     void LoginAndRegister(bool login,string Action)
     {
         Dictionary<string, string> formFields = new Dictionary<string, string>();
+        //获取输入框内容
         string id = GameObject.Find("LoginId").GetComponent<InputField>().text;
         string pwd = GameObject.Find("LoginPwd").GetComponent<InputField>().text;
+        //判断输入框的输入完整性
         if (string.IsNullOrEmpty(id) || string.IsNullOrEmpty(pwd))
         {
             Active.GetComponent<Text>().text = "请将信息填写完整";
@@ -68,7 +70,9 @@ public class AccountController : MonoBehaviour
         }
         formFields.Add("userName", id);
         formFields.Add("Pwd", GetMD5(pwd));
-        string url = string.Format("{0}/api/Account/{1}?userName={2}&Pwd={3}", GameBaseSetting.URL,Action, formFields["userName"], formFields["Pwd"]);
+        string url = string.Format("{0}/api/Account/{1}?userName={2}&Pwd={3}", 
+                        GameBaseSetting.URL,Action, id, GetMD5(pwd));
+        //发送请求
         StartCoroutine(RequestAction(login, url, formFields));
     }
 

@@ -48,7 +48,8 @@ public class BgmVOL : MonoBehaviour
         model.ActionVOL = VOLBaseSetting.ActionVOL;
         model.PropVOL = VOLBaseSetting.PropVOL;
         model.BgmVOL = VOLBaseSetting.BgmVOL;
-        var str = JsonUtility.ToJson(model);//根据最新的音量配置实例化一个新的实体，转换成Json串
+        //根据最新的音量配置实例化一个新的实体，转换成Json串
+        var str = JsonUtility.ToJson(model);
         SaveJson.Save(GameBaseSetting.VolJsonPath, str);//保存到本地
     }
 }

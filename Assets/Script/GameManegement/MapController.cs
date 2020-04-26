@@ -35,18 +35,22 @@ public class MapController : MonoBehaviour
             var result = GameObject.Find("Part"+HideObject+"(Clone)");
             if (result != null)
             {
-                PartPosition[HideObject] = PartPosition[HideObject] + 68;//计算下一次的位置
+                //计算下一次的位置
+                PartPosition[HideObject] = PartPosition[HideObject] + 68;
                 Destroy(result);//销毁
             }
         }
         if (ShowObject != -1)
         {
-            var create= GameObject.FindGameObjectWithTag("Tag_GoPool").GetComponent<GoPool>().GetGo(ShowObject, false);
+            var create= GameObject.FindGameObjectWithTag("Tag_GoPool")
+                       .GetComponent<GoPool>()
+                       .GetGo(ShowObject, false);
             create.transform.position =new Vector3(PartPosition[ShowObject],0,0);
             create.SetActive(true);//启用
         }
         var pst = this.gameObject.transform.position;
-        this.gameObject.transform.position=new Vector3(pst.x+68f,pst.y,pst.z);//将该碰撞器转移到下一个位置
+        //将该碰撞器转移到下一个位置
+        this.gameObject.transform.position=new Vector3(pst.x+68f,pst.y,pst.z);
 
     }
 }
