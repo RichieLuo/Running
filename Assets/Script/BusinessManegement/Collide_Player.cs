@@ -34,7 +34,7 @@ public class Collide_Player : MonoBehaviour
                 GameBaseSetting.Score += 10;
                 break;
             case "Tag_ChestJump"://碰到跳跃宝箱
-                PlayBgm(1); buff.Jump_On =true;  GameBaseSetting.Score += 10000;
+                PlayBgm(1); buff.Jump_On =true;  GameBaseSetting.Score += 10;
                 hide = true;
                 break;
             case "Tag_Icon"://碰到金币
